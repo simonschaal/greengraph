@@ -21,6 +21,9 @@ def plotGraph(start, end, steps, out=None):
     mygraph=Greengraph(start, end)
     data = mygraph.green_between(steps)
     plt.plot(data)
+    plt.xlabel("steps")
+    plt.ylabel("proportion of green pixels")
+    plt.title("Greengraph from "+start+" to "+end)
 
     if out:
         plt.savefig(out)
