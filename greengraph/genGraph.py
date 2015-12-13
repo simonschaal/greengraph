@@ -6,9 +6,9 @@ def plotGraph(start, end, steps, out=None):
     Parameters
     ----------
     start: str
-    Starting city.
+    Start city.
     end: str
-    Ending city.
+    End city.
     steps: int
     Gives number of images to process between start and end.
     out: str

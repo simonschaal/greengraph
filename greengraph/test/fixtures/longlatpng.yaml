@@ -1,0 +1,10 @@
+- lat: 51.5073509
+  long: -0.1277583
+  png: london-sat.png
+  png-green: london-green.png
+  answer: 106725
+- lat: 50.32924561
+  long: 0.97445512
+  png: sea-sat.png
+  png-green: sea-green.png
+  answer: 0
