@@ -18,10 +18,14 @@ def test_build_default_params():
             assert_equal(g.end, fixture['end'])
 
 def test_geolocate():
-    #requires itnernet
-    latlong=Greengraph.geolocate(Greengraph("",""), "London")
-    assert_almost_equal(latlong[0],51.5073,places=2)
-    assert_almost_equal(latlong[1], -0.1277,places=2)
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','longlatplace.yaml')) as fixtures_file:
+        fixtures=yaml.load(fixtures_file)
+        for fixture in fixtures:
+            g=Greengraph("","")
+            g.geocoder=Mock(geocode=Mock( return_value=[( (fixture['lat'], fixture['long'], 0.0), (fixture['lat'], fixture['long']) )] ))
+            latlong=g.geolocate(fixture['place'])
+            assert_almost_equal(latlong[0],fixture['lat'],places=2)
+            assert_almost_equal(latlong[1], fixture['long'],places=2)
 
 def test_location_sequence():
     result=Greengraph.location_sequence(Greengraph("",""), (0,0),(10,10),5)
